@@ -1,39 +1,22 @@
-// SongRecognitionScreen.js
-import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import { Audio } from 'expo-av';
-
-export default function SongRecognitionScreen() {
-  const [recording, setRecording] = useState(null);
-
-  async function startRecording() {
-    try {
-      const { recording } = await Audio.Recording.createAsync({
-        quality: Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY,
-        ios: {
-          extension: '.m4a',
-          outputFormat: Audio.RECORDING_OPTION_IOS_OUTPUT_FORMAT_MPEG4AAC,
-        },
-      });
-      setRecording(recording);
-    } catch (error) {
-      console.error('Error starting recording:', error);
-    }
-  }
-
-  async function stopRecording() {
-    if (recording) {
-      await recording.stopAndUnloadAsync();
-      // Send the recording to your backend for recognition
-      // Handle the response (song details) here
-    }
-  }
-
-  return (
-    <View>
-      <Text>Song Recognition App</Text>
-      <Button title="Start Recording" onPress={startRecording} />
-      <Button title="Stop Recording" onPress={stopRecording} />
-    </View>
-  );
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Web App</title>
+    <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Web App</h1>
+    </header>
+    <main>
+        <p>This is the main content of your app.</p>
+    </main>
+    <footer>
+        <p>© 2024 My Company</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
